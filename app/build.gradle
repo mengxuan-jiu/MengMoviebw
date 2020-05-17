@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -26,4 +31,64 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    //Okhttp依赖
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    //Okhttp日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+
+    //Butterknife依赖之一
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+
+    //EventBus依赖库:
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    //EventBus依赖库:
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //retrofit2.0依赖
+    implementation 'com.squareup.retrofit2:retrofit:+'
+//让retrofit支持Gson自动解析json
+    implementation 'com.squareup.retrofit2:converter-gson:+'
+//让retrofit支持Rxjava2
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:+'
+
+//Rxjava依赖
+    implementation 'io.reactivex.rxjava2:rxjava:+'
+    implementation 'io.reactivex.rxjava2:rxandroid:+'
+
+//retrofit2.0依赖
+    implementation 'com.squareup.retrofit2:retrofit:+'
+//让retrofit支持Gson自动解q析json
+    implementation 'com.squareup.retrofit2:converter-gson:+'
+//让retrofit支持Rxjava2
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:+'
+
+//Rxjava依赖
+    implementation 'io.reactivex.rxjava2:rxjava:+'
+    implementation 'io.reactivex.rxjava2:rxandroid:+'
+
+    implementation 'com.blankj:utilcodex:1.26.0'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+    //SmartRefresh依赖
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+// 其他依赖fresco: fadeDuration
+//  xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    implementation 'com.facebook.fresco:fresco:0.12.0'
+    //tab
+    implementation 'com.android.support:design:28.0.0'
+//图片选择器
+    // maven { url 'https://jitpack.io' }
+    ///     maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+    implementation 'com.github.wildma:PictureSelector:1.1.1'
 }
