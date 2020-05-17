@@ -1,5 +1,9 @@
 package com.bw.movie.util;
 
+import com.bw.movie.Api;
+import com.bw.movie.ApiService;
+
+import java.security.MessageDigest;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -17,6 +21,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @类名NetWorkUtil
  **/
 public class NetWorkUtil {
+
+    private final ApiService mApiService;
+
     private static final class PrivateNetUtil {
         private static final NetWorkUtil NET_UTIL = new NetWorkUtil();
     }
@@ -29,16 +36,21 @@ public class NetWorkUtil {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .writeTimeout(8, TimeUnit.SECONDS)
-                .callTimeout(8, TimeUnit.SECONDS)
-                .readTimeout(8, TimeUnit.SECONDS)
+                .writeTimeout(6, TimeUnit.SECONDS)
+                .callTimeout(6, TimeUnit.SECONDS)
+                .readTimeout(6, TimeUnit.SECONDS)
                 .addInterceptor(httpLoggingInterceptor)
                 .build();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl(Api.URL)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+        mApiService = retrofit.create(ApiService.class);
+    }
+
+    public ApiService getmApiService() {
+        return mApiService;
     }
 }
