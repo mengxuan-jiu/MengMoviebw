@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.MineFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:background="@drawable/my_bg"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:text="我的"
+            android:textColor="#fff" />
+
+        <ImageView
+            android:id="@+id/look_information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/xinxi" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="-60dp"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:src="@mipmap/ic_launcher"
+            android:layout_weight="2"
+            android:id="@+id/im_dl"
+            android:layout_width="@dimen/dp_8"
+            android:layout_height="@dimen/dp_80"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="阿萨德才" />
+
+        <ImageButton
+            android:id="@+id/information"
+            android:layout_width="39dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_black" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_margin="@dimen/dp_30"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:background="#071452"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dp_2"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/wodedianyingpiao" />
+
+            <TextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:text="电影票"
+                android:textColor="#fff" />
+
+            <ImageView
+                android:id="@+id/dyp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="10"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:layout_margin="@dimen/dp_30"
+            android:background="@drawable/rectangle_26_copy_2"
+            android:orientation="vertical">
+            <!--/////////////////////////////////////////////////-->
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#071452">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/my_attention"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="@drawable/group_2"
+                        android:gravity="center"
+                        android:text="我的关注" />
+
+                    <RadioButton
+                        android:id="@+id/my_reservation"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="@drawable/group_4"
+                        android:gravity="center"
+                        android:text="我的预约" />
+
+                    <RadioButton
+                        android:id="@+id/buy_tickets"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="@drawable/goupiaojilu"
+                        android:gravity="center"
+                        android:text="购票记录" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+            <!--/////////////////////////////////////////////////-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="#071452">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/watched_a_movie"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="@drawable/chongzhijilu"
+                        android:gravity="center"
+                        android:text="看过电影" />
+
+                    <RadioButton
+                        android:id="@+id/my_comment"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="@drawable/group_3"
+                        android:gravity="center"
+                        android:text="我的评论" />
+
+                    <RadioButton
+                        android:id="@+id/feedback"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="@drawable/goupiaojilu"
+                        android:gravity="center"
+                        android:text="建议反馈" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+            <!--/////////////////////////////////////////////////-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="#071452">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/my_settings"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableTop="@drawable/shezhi"
+                        android:gravity="center"
+                        android:text="我的设置" />
+
+                    <RadioButton
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null" />
+
+                    <RadioButton
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null" />
+                </RadioGroup>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

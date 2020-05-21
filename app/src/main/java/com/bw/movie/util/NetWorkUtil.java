@@ -2,7 +2,9 @@ package com.bw.movie.util;
 
 import com.bw.movie.url.Api;
 import com.bw.movie.apiservice.ApiService;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +12,9 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -66,24 +70,37 @@ public class NetWorkUtil {
         .subscribe();
 
     }
-    public  void  getHaveParameters(Class myclass,String url,Map<String , Object> map){
-        mApiService.getHaveParameters(url, map)
-                .subscribeOn(Schedulers.io())
+
+    //这个方法是通过model来调用的
+    public void postInfo(String url, final Class cls, Map<String, Object> map, final NetCallback netCallback) {
+
+        mApiService.postHaveParameters(url, map).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseBody>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
-
                     @Override
                     public void onNext(ResponseBody responseBody) {
-
+                        try {
+                            String string = responseBody.string();
+                            Gson gson = new Gson();
+                            //参数1：json串 参数2：MyData.class
+                            Object object = gson.fromJson(string, cls);
+                            if (netCallback != null) {
+                                netCallback.onSuccess(object);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        if (netCallback != null) {
+                            netCallback.onError(e.getMessage());
+                        }
                     }
 
                     @Override
@@ -91,6 +108,84 @@ public class NetWorkUtil {
 
                     }
                 });
+    }
+    //这个方法是通过model来调用的
+    public void getInfo(String url, final Class cls, Map<String, Object> map, final NetCallback netCallback) {
+        mApiService.getHaveParameters(url, map).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
+                    }
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Gson gson = new Gson();
+                            //参数1：json串 参数2：MyData.class
+                            Object object = gson.fromJson(string, cls);
+                            if (netCallback != null) {
+                                netCallback.onSuccess(object);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (netCallback != null) {
+                            netCallback.onError(e.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    public void getInfo(String url, final Class cls, final NetCallback netCallback) {
+        mApiService.getNoParameters(url).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Gson gson = new Gson();
+                            //参数1：json串 参数2：MyData.class
+                            Object object = gson.fromJson(string, cls);
+                            if (netCallback != null) {
+                                netCallback.onSuccess(object);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (netCallback != null) {
+                            netCallback.onError(e.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    //是吧当前网络工具类的数据回传给Mode层
+    public interface NetCallback<T> {
+        void onSuccess(T t);
+
+        void onError(String error);
     }
 }
