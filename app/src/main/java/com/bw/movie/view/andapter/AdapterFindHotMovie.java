@@ -53,7 +53,8 @@ public class AdapterFindHotMovie extends RecyclerView.Adapter<AdapterFindHotMovi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                int movieId = bean.getMovieId();
+                onitimClickListener.getid( movieId );
             }
         });
 

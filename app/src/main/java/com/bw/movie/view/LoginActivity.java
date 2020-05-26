@@ -98,7 +98,7 @@ public class LoginActivity extends BaseActivity {
         if (isorno) {
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
-           // finish();
+           finish();
         }
 
     }

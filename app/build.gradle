@@ -79,7 +79,7 @@ dependencies {
     implementation 'com.blankj:utilcodex:1.26.0'
 
     //glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    //   implementation 'com.github.bumptech.glide:glide:4.9.0'
 
     //SmartRefresh依赖
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
@@ -93,4 +93,6 @@ dependencies {
     ///     maven { url "https://dl.bintray.com/thelasterstar/maven/" }
     implementation 'com.github.wildma:PictureSelector:1.1.1'
     implementation 'com.github.xiaohaibin:XBanner:androidx_v1.0.6'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }

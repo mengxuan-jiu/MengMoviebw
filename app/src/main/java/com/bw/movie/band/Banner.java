@@ -1,8 +1,10 @@
 package com.bw.movie.band;
 
+import android.text.method.SingleLineTransformationMethod;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.stx.xhb.xbanner.entity.SimpleBannerInfo;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -49,7 +51,7 @@ public class Banner {
         this.result = result;
     }
 
-    public static class ResultBean {
+    public static class ResultBean extends SimpleBannerInfo {
         /**
          * imageUrl : http://mobile.bwstudent.com/images/movie/stills/whwdzg/whwdzg1_h.jpg
          * jumpUrl : wd://movie?movieId=23
@@ -60,8 +62,8 @@ public class Banner {
         private String jumpUrl;
         private int rank;
 
-        public List<? extends SimpleBannerInfo> getImageUrl() {
-            return Collections.emptyList();
+        public String getImageUrl() {
+            return imageUrl;
         }
 
         public void setImageUrl(String imageUrl) {
@@ -82,6 +84,11 @@ public class Banner {
 
         public void setRank(int rank) {
             this.rank = rank;
+        }
+
+        @Override
+        public Object getXBannerUrl() {
+            return null;
         }
     }
 }

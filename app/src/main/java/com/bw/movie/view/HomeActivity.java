@@ -69,6 +69,7 @@ public class HomeActivity extends BaseActivity {
             }
         });
 tag.setupWithViewPager(vp);
+        vp.setOffscreenPageLimit( 4 );
     }
 
 

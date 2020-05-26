@@ -21,6 +21,7 @@ public interface Api {
     String FINDRELEASEMOVIELIST="movieApi/movie/v2/findReleaseMovieList";
     String FINDHOTMOVIELIST="movieApi/movie/v2/findHotMovieList";
     String BANNER="movieApi/tool/v2/banner";
+    String FINDMOVIEBYKEYWORD="movieApi/movie/v2/findMovieByKeyword";
 
 
 

@@ -58,7 +58,8 @@ public class AdapterfindComingSoonMovie extends RecyclerView.Adapter<Adapterfind
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                int movieId = bean.getMovieId();
+                fOnitimClickListener.getid( movieId );
             }
         });
 

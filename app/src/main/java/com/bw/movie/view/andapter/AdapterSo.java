@@ -4,17 +4,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.bw.movie.R;
-import com.bw.movie.band.FindHotMovieList;
-import com.bw.movie.band.FindReleaseMovieList;
+import com.bw.movie.band.FindMovieByKeyword;
 import com.bw.movie.util.FrescoUtil;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -31,12 +27,12 @@ import butterknife.ButterKnife;
  * @项目名Movie
  * @类名AdapterFindHotMovie
  **/
-public class AdapterFindReleaseMovie extends RecyclerView.Adapter<AdapterFindReleaseMovie.ViewHolderFindHotMovie> {
+public class AdapterSo extends RecyclerView.Adapter<AdapterSo.ViewHolderFindHotMovie> {
 
 
-    private List<FindReleaseMovieList.ResultBean> list;
+    private List<FindMovieByKeyword.ResultBean> list;
 
-    public AdapterFindReleaseMovie(List<FindReleaseMovieList.ResultBean> list) {
+    public AdapterSo(List<FindMovieByKeyword.ResultBean> list) {
 
         this.list = list;
     }
@@ -44,23 +40,15 @@ public class AdapterFindReleaseMovie extends RecyclerView.Adapter<AdapterFindRel
     @NonNull
     @Override
     public ViewHolderFindHotMovie onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolderFindHotMovie(
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.find_release_list, parent, false));
+        return new ViewHolderFindHotMovie( LayoutInflater.from( parent.getContext() ).inflate( R.layout.so, parent, false ) );
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderFindHotMovie holder, int position) {
-        FindReleaseMovieList.ResultBean bean = list.get(position);
+        FindMovieByKeyword.ResultBean bean = list.get( position );
         FrescoUtil.getInstance().myProgressive(bean.getImageUrl(), holder.hImage);
         holder.hName.setText(bean.getName());
         holder.hScore.setText(bean.getScore()+"分");
-holder.itemView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        int movieId = bean.getMovieId();
-        onitimClickListener.getid( movieId );
-    }
-});
 
     }
 
@@ -70,7 +58,6 @@ holder.itemView.setOnClickListener(new View.OnClickListener() {
     }
 
     public class ViewHolderFindHotMovie extends RecyclerView.ViewHolder {
-
         @BindView(R.id.h_image)
         SimpleDraweeView hImage;
         @BindView(R.id.h_name)
@@ -79,24 +66,24 @@ holder.itemView.setOnClickListener(new View.OnClickListener() {
         TextView hScore;
         @BindView(R.id.butt_ticket_purchase)
         Button buttTicketPurchase;
-
         public ViewHolderFindHotMovie(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
+
+            super( itemView );
+            ButterKnife.bind( this, itemView );
         }
     }
 
-    public void setOnitimClickListener(AdapterFindReleaseMovie.onitimClickListener onitimClickListener) {
-        this.onitimClickListener = onitimClickListener;
+    onitimClickListener fOnitimClickListener;
+
+    public void setOnitimClickListener(onitimClickListener onitimClickListener) {
+        fOnitimClickListener = onitimClickListener;
     }
 
-    onitimClickListener onitimClickListener;
+    public interface onitimClickListener {
 
-
-
-    public interface  onitimClickListener{
         void getid(int id);
     }
+
 
 
 }
