@@ -1,32 +1,61 @@
 package com.bw.movie.view.fragment;
 
 
-import android.os.Bundle;
+
 
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+
 
 import com.bw.movie.R;
+import com.bw.movie.base.BaseFragment;
+import com.bw.movie.base.BasePresenter;
+import com.bw.movie.presenter.PresenterImpl;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CinemaFragment extends Fragment {
+public class CinemaFragment extends BaseFragment {
 
+    @Override
+    protected BasePresenter initPresenter() {
+        return new PresenterImpl();
+    }
 
-    public CinemaFragment() {
-        // Required empty public constructor
+    @Override
+    protected void setListener() {
+
+    }
+
+    @Override
+    public int getFragLayoutID() {
+        return R.layout.fragment_cinema;
+    }
+
+    @Override
+    public void initViews(View view) {
+
+    }
+
+    @Override
+    public void startCoding() {
+
+    }
+
+    @Override
+    public void lazyLoad() {
+
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cinema, container, false);
+    public void onSuccess(Object o) {
+
     }
 
+    @Override
+    public void onError(String error) {
+
+    }
 }

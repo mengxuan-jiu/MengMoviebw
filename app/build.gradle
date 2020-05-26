@@ -92,4 +92,5 @@ dependencies {
     // maven { url 'https://jitpack.io' }
     ///     maven { url "https://dl.bintray.com/thelasterstar/maven/" }
     implementation 'com.github.wildma:PictureSelector:1.1.1'
+    implementation 'com.github.xiaohaibin:XBanner:androidx_v1.0.6'
 }

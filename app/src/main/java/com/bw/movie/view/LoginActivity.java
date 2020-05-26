@@ -1,6 +1,7 @@
 package com.bw.movie.view;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bw.movie.App;
 import com.bw.movie.R;
 import com.bw.movie.band.LoginBand;
 import com.bw.movie.base.BaseActivity;
@@ -60,6 +62,12 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void setListener() {
+        sign_up_now.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent(LoginActivity.this, RegisterActivity.class, Bundle.EMPTY);
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,8 +93,8 @@ public class LoginActivity extends BaseActivity {
     public void startCoding() {
         sp = getPreferences(MODE_PRIVATE);
         boolean isorno = sp.getBoolean("isorno", false);
-        sp.getString("yy","");
-        sp.getString("mm","");
+        String yy = sp.getString("yy", "");
+        String mm = sp.getString("mm", "");
         if (isorno) {
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
@@ -94,12 +102,6 @@ public class LoginActivity extends BaseActivity {
         }
 
     }
-
-    @Override
-    public void onClick(View view) {
-
-    }
-
     @Override
     public void onSuccess(Object o) {
         if (o instanceof LoginBand) {
@@ -107,16 +109,31 @@ public class LoginActivity extends BaseActivity {
             Toast.makeText(this, "" + status, Toast.LENGTH_SHORT).show();
             Log.e("ll", "onSuccess: "+ status);
             if ("0000".equals(status)){
+//                SharedPreferences lvxx = App.sContext.getSharedPreferences("lvxx", Context.MODE_PRIVATE);
+//                if (lvxx != null) {
+//                    SharedPreferences.Editor edit = lvxx.edit();
+//                    LoginBand.ResultBean result = ((LoginBand) o).getResult();
+//                    int userId = result.getUserId();
+//                    String sessionId = result.getSessionId();
+//
+//                    edit.putInt("userId", userId);
+//                    edit.putString("sessionId", sessionId);
+//                    edit.commit();
+//                }
+
+                    LoginBand.ResultBean result = ((LoginBand) o).getResult();
+                    int userId = result.getUserId();
+                    String sessionId = result.getSessionId();
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
-                edit = sp.edit();
-                edit.putBoolean("isorno", true);
+                this.edit = sp.edit();
+                this.edit.putBoolean("isorno", true);
                 String em = username.getText().toString();
 
                 String pass = password.getText().toString();
-                edit.putString("yy",em);
-                edit.putString("mm",EncryptUtil.encrypt(pass));
-                edit.apply();
+                this.edit.putString("yy",em);
+                this.edit.putString("mm",EncryptUtil.encrypt(pass));
+                this.edit.apply();
                 finish();
             }
 

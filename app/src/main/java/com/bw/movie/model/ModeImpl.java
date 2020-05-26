@@ -48,8 +48,39 @@ public class ModeImpl implements IContart.IModel {
     }
 
     @Override
+    public void getInfoHaveParams(String url, Class cls, Map<String, Object> h_map, Map<String, Object> map, IContart.ModelCallback modelCallback) {
+        NetWorkUtil.getInstance().getInfo(url, cls, h_map, map, new NetWorkUtil.NetCallback() {
+            @Override
+            public void onSuccess(Object o) {
+                modelCallback.onSuccess(o);
+            }
+
+            @Override
+            public void onError(String error) {
+                modelCallback.onError(error);
+            }
+        });
+    }
+
+    @Override
     public void postInfoHaveParams(String url, Class cls, Map<String, Object> map, IContart.ModelCallback modelCallback) {
         NetWorkUtil.getInstance().postInfo(url, cls, map, new NetWorkUtil.NetCallback() {
+            @Override
+            public void onSuccess(Object o) {
+                modelCallback.onSuccess(o);
+            }
+
+            @Override
+            public void onError(String error) {
+                modelCallback.onError(error);
+
+            }
+        });
+    }
+
+    @Override
+    public void postInfoHaveParams(String url, Class cls, Map<String, Object> h_map, Map<String, Object> map, IContart.ModelCallback modelCallback) {
+        NetWorkUtil.getInstance().postInfo(url, cls, h_map, map, new NetWorkUtil.NetCallback() {
             @Override
             public void onSuccess(Object o) {
                 modelCallback.onSuccess(o);

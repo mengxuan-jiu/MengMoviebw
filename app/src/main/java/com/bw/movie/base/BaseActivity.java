@@ -1,5 +1,7 @@
 package com.bw.movie.base;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,7 +18,7 @@ import com.bw.movie.contract.IContart;
  * @项目名MengMoviebw
  * @类名BaseActivity
  **/
-public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IContart.IView, View.OnClickListener {
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IContart.IView {
     public P mPresenter;
 
     @Override
@@ -24,7 +26,19 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         super.onCreate(savedInstanceState);
         init();
     }
-
+    void init() {
+        if (getLayoutId() != 0) {
+            setContentView(getLayoutId());
+            initViews();
+            initData();
+            setListener();
+            if (mPresenter == null) {
+                mPresenter = initPresenter();
+                mPresenter.onAttch(this);
+            }
+            startCoding();
+        }
+    }
     //初始化P曾对象
     public abstract P initPresenter();
 
@@ -43,21 +57,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     //可以写代码了
     public abstract void startCoding();
-
-    void init() {
-        if (getLayoutId() != 0) {
-            setContentView(getLayoutId());
-            initViews();
-            initData();
-            setListener();
-            if (mPresenter == null) {
-                mPresenter = initPresenter();
-                mPresenter.onAttch(this);
-            }
-            startCoding();
-        }
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -65,5 +64,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
             mPresenter.onDeAttch();
             mPresenter = null;
         }
+    }
+    // context this, cs跳转对象 bundle 传递参数
+    public void Intent(Context context, Class<?> cs, Bundle bundle) {
+        Intent i = new Intent(context, cs);
+        if (bundle != null)
+            i.putExtras(bundle);
+        context.startActivity(i);
     }
 }

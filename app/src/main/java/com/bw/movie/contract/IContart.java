@@ -15,8 +15,10 @@ public interface IContart {
     interface IModel{
         void getInfoNoParams(String url, Class cls, ModelCallback modelCallback);
        void getInfoHaveParams(String url, Class cls, Map<String, Object> map, ModelCallback modelCallback);
+       void getInfoHaveParams(String url, Class cls, Map<String, Object> h_map, Map<String, Object> map, ModelCallback modelCallback);
         //post
         void postInfoHaveParams(String url, Class cls, Map<String, Object> map, ModelCallback modelCallback);
+        void postInfoHaveParams(String url, Class cls, Map<String, Object> h_map, Map<String, Object> map, ModelCallback modelCallback);
     }
 
     interface IView<T>{
@@ -26,8 +28,10 @@ public interface IContart {
 
     interface IPresenter{
         void startRequest(String url, Class cls, Map<String, Object> map);
+        void startRequest(String url, Class cls, Map<String, Object> h_map, Map<String, Object> map);
         void startRequest(String url, Class cls);
         void postRequest(String url, Class cls, Map<String, Object> map);
+        void postRequest(String url, Class cls, Map<String, Object> h_map, Map<String, Object> map);
     }
 
     interface ModelCallback<T>{

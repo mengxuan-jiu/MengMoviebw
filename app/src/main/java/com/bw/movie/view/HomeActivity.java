@@ -71,10 +71,7 @@ public class HomeActivity extends BaseActivity {
 tag.setupWithViewPager(vp);
     }
 
-    @Override
-    public void onClick(View view) {
 
-    }
 
     @Override
     public void onSuccess(Object o) {

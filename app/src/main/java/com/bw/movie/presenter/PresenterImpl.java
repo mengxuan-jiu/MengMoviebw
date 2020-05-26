@@ -39,6 +39,21 @@ public class PresenterImpl extends BasePresenter {
     }
 
     @Override
+    public void startRequest(String url, Class cls, Map<String, Object> h_map, Map<String, Object> map) {
+        mModel.getInfoHaveParams(url, cls, h_map, map, new IContart.ModelCallback() {
+            @Override
+            public void onSuccess(Object o) {
+                getView().onSuccess(o);
+            }
+
+            @Override
+            public void onError(String error) {
+                getView().onError(error);
+            }
+        });
+    }
+
+    @Override
     public void startRequest(String url, Class cls) {
         mModel.getInfoNoParams(url, cls, new IContart.ModelCallback() {
             @Override
@@ -56,6 +71,21 @@ public class PresenterImpl extends BasePresenter {
     @Override
     public void postRequest(String url, Class cls, Map<String, Object> map) {
         mModel.postInfoHaveParams(url, cls, map, new IContart.ModelCallback() {
+            @Override
+            public void onSuccess(Object o) {
+                getView().onSuccess(o);
+            }
+
+            @Override
+            public void onError(String error) {
+                getView().onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void postRequest(String url, Class cls, Map<String, Object> h_map, Map<String, Object> map) {
+        mModel.postInfoHaveParams(url, cls, h_map, map, new IContart.ModelCallback() {
             @Override
             public void onSuccess(Object o) {
                 getView().onSuccess(o);
